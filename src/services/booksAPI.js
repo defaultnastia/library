@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const booksAPIInstance = axios.create({
-  baseURL: "library-be-production-be58.up.railway.app/api/books",
+  baseURL: "https://library-be-production-be58.up.railway.app/api/books",
 });
 
 export const getAllBooks = async () => {
