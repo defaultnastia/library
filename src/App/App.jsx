@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import BooksList from "../BooksList/BooksList";
 import css from "./App.module.css";
 import { getAllBooks } from "../services/booksAPI";
+import SearchBar from "../../SearchBar/SearchBar";
+import AddNewBook from "../../AddNewBook/AddNewBook";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -28,6 +30,10 @@ function App() {
   return (
     <>
       <h1 className={css.welcome}>Welcome to the ✨Library✨ </h1>
+      <div className={css.controls}>
+        <SearchBar />
+        <AddNewBook />
+      </div>
       {books.length > 0 ? (
         <BooksList books={books} />
       ) : (

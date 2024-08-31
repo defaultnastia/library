@@ -1,0 +1,24 @@
+.normal {
+  border-radius: 8px;
+  padding: 4px 8px;
+  border: 2px solid var(--main-color);
+  background-color: transparent;
+}
+
+.normal:hover {
+  color: white;
+  background: green;
+  border: 2px solid green;
+}
+
+.red {
+  border-radius: 8px;
+  padding: 4px 8px;
+  border: 2px solid crimson;
+  color: crimson;
+}
+
+.red:hover {
+  background: crimson;
+  color: white;
+}

@@ -1,0 +1,22 @@
+.book {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid var(--main-color);
+  border-radius: 16px;
+}
+
+.book h3 {
+  padding-bottom: 12px;
+}
+
+.tools {
+  padding: 20px 0px 0px;
+}
+
+.tools button {
+  margin-right: 16px;
+}
+
+.tools button:last-child {
+  margin-right: 0px;
+}

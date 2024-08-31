@@ -1,10 +1,11 @@
 import Book from "../Book/Book";
+import css from "./BooksList.module.css";
 
 const BooksList = ({ books }) => {
   return (
     <div>
-      <h2>List of the books</h2>
-      <ul>
+      <h2 className={css.header}>List of the books</h2>
+      <ul className={css.list}>
         {books.map((book) => {
           return (
             <li key={book.isbn}>
