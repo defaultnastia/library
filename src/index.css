@@ -29,6 +29,14 @@ input {
   color: inherit;
 }
 
+input:disabled {
+  background-color: rgba(128, 128, 128, 0.192);
+}
+
+input:focus {
+  border-color: gold;
+}
+
 button {
   border-radius: 8px;
   padding: 4px 8px;

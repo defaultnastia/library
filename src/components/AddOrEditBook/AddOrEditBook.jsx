@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
-import Button from "../src/Button/Button";
+import { addBook, getAllBooks, updateBook } from "../../services/booksAPI";
+import Button from "../Button/Button";
 import css from "./AddOrEditBook.module.css";
-import { addBook, getAllBooks, updateBook } from "../src/services/booksAPI";
 
 const AddOrEditBook = ({
   setBooks,
@@ -78,7 +78,7 @@ const AddOrEditBook = ({
 
   return (
     <div>
-      <h2>
+      <h2 className={css.header}>
         {editMode ? `Edit the Book "${editMode.title}"` : "Add a New Book"}
       </h2>
       <form className={css.form} onSubmit={handleSubmit} ref={formRef}>
@@ -101,6 +101,7 @@ const AddOrEditBook = ({
           type="text"
           placeholder="ISBN"
           ref={isbnInputRef}
+          disabled={editMode && true}
           required
         />
         <label>

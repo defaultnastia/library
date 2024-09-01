@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import { getAllBooks } from "../../services/booksAPI";
+import AddOrEditBook from "../AddOrEditBook/AddOrEditBook";
 import BooksList from "../BooksList/BooksList";
+import SearchBar from "../SearchBar/SearchBar";
 import css from "./App.module.css";
-import { getAllBooks } from "../services/booksAPI";
-import SearchBar from "../../SearchBar/SearchBar";
-import AddOrEditBook from "../../AddOrEditBook/AddOrEditBook";
 
 function App() {
   const [books, setBooks] = useState([]);

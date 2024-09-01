@@ -1,5 +1,9 @@
+import {
+  deleteBook,
+  getAllBooks,
+  markAsBorrowed,
+} from "../../services/booksAPI";
 import Button from "../Button/Button";
-import { deleteBook, getAllBooks, markAsBorrowed } from "../services/booksAPI";
 import css from "./Book.module.css";
 
 const Book = ({ book, setEditMode, setLoader, setError, setBooks }) => {

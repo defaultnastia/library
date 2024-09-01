@@ -1,7 +1,7 @@
-import Button from "../src/Button/Button";
-import css from "./SearchBar.module.css";
-import { getAllBooks, searchBooks } from "../src/services/booksAPI";
 import { useRef } from "react";
+import { getAllBooks, searchBooks } from "../../services/booksAPI";
+import Button from "../Button/Button";
+import css from "./SearchBar.module.css";
 
 const SearchBar = ({ setBooks, setLoader, setError }) => {
   const formRef = useRef();
@@ -26,6 +26,7 @@ const SearchBar = ({ setBooks, setLoader, setError }) => {
   const handleReset = async () => {
     try {
       setLoader(true);
+      setError(false);
       const allBooks = await getAllBooks();
       setBooks(allBooks);
     } catch (error) {
