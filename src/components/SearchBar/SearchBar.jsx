@@ -12,6 +12,7 @@ const SearchBar = ({ setBooks, setLoader, setError }) => {
 
     try {
       setLoader(true);
+      setError(null);
       const queriedBooks = await searchBooks(query);
       setBooks(queriedBooks);
     } catch (error) {
@@ -26,7 +27,7 @@ const SearchBar = ({ setBooks, setLoader, setError }) => {
   const handleReset = async () => {
     try {
       setLoader(true);
-      setError(false);
+      setError(null);
       const allBooks = await getAllBooks();
       setBooks(allBooks);
     } catch (error) {

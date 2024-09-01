@@ -12,6 +12,7 @@ const Book = ({ book, setEditMode, setLoader, setError, setBooks }) => {
   const handleBorrowButton = async () => {
     try {
       setLoader(true);
+      setError(null);
       await markAsBorrowed(isbn, !isBorrowed);
       const allBooks = await getAllBooks();
       setBooks(allBooks);
@@ -24,12 +25,14 @@ const Book = ({ book, setEditMode, setLoader, setError, setBooks }) => {
   };
 
   const handleEditButton = () => {
+    setError(null);
     setEditMode(book);
   };
 
   const handleDeleteButton = async () => {
     try {
       setLoader(true);
+      setError(null);
       await deleteBook(isbn);
       const allBooks = await getAllBooks();
       setBooks(allBooks);
