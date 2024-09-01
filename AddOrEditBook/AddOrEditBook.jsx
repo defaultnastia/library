@@ -13,6 +13,7 @@ const AddOrEditBook = ({
   const formRef = useRef();
   const titleInputRef = useRef();
   const authorInputRef = useRef();
+  const isbnInputRef = useRef();
   const isBorrowedInputRef = useRef();
 
   useEffect(() => {
@@ -22,16 +23,20 @@ const AddOrEditBook = ({
     if (authorInputRef.current) {
       authorInputRef.current.value = editMode?.author || "";
     }
+    if (isbnInputRef.current) {
+      isbnInputRef.current.value = editMode?.isbn || "";
+    }
     if (isBorrowedInputRef.current) {
       isBorrowedInputRef.current.checked = editMode?.isBorrowed || "";
     }
-  }, [editMode?.title, editMode?.author, editMode?.isBorrowed]);
+  }, [editMode]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     const title = event.target.title.value;
     const author = event.target.author.value;
+    const isbn = event.target.isbn.value;
     const isBorrowed = event.target.borrowed.checked;
 
     try {
@@ -41,6 +46,7 @@ const AddOrEditBook = ({
       if (
         title === editMode?.title &&
         author === editMode?.author &&
+        isbn === editMode?.isbn &&
         isBorrowed === editMode?.isBorrowed
       ) {
         setEditMode(null);
@@ -48,9 +54,9 @@ const AddOrEditBook = ({
       }
 
       if (editMode) {
-        await updateBook(editMode.isbn, { title, author, isBorrowed });
+        await updateBook(editMode.isbn, { title, author, isbn, isBorrowed });
       } else {
-        await addBook({ title, author, isBorrowed });
+        await addBook({ title, author, isbn, isBorrowed });
       }
 
       const newBookList = await getAllBooks();
@@ -88,6 +94,13 @@ const AddOrEditBook = ({
           type="text"
           placeholder="Author"
           ref={authorInputRef}
+          required
+        />
+        <input
+          name="isbn"
+          type="text"
+          placeholder="ISBN"
+          ref={isbnInputRef}
           required
         />
         <label>
