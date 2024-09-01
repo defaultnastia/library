@@ -14,3 +14,15 @@
   border: 1px solid var(--main-color);
   border-radius: 16px;
 }
+
+.error,
+.loading {
+  display: block;
+  text-align: center;
+  margin: 20px;
+}
+
+.error {
+  color: crimson;
+  font-weight: 500;
+}

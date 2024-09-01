@@ -3,17 +3,18 @@ import BooksList from "../BooksList/BooksList";
 import css from "./App.module.css";
 import { getAllBooks } from "../services/booksAPI";
 import SearchBar from "../../SearchBar/SearchBar";
-import AddNewBook from "../../AddNewBook/AddNewBook";
+import AddOrEditBook from "../../AddOrEditBook/AddOrEditBook";
 
 function App() {
   const [books, setBooks] = useState([]);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [loader, setLoader] = useState(false);
+  const [editMode, setEditMode] = useState(null);
 
   useEffect(() => {
     const getBooks = async () => {
       try {
-        setError(false);
+        setError(null);
         setLoader(true);
         const fetchedBooks = await getAllBooks();
         setBooks(fetchedBooks);
@@ -31,13 +32,34 @@ function App() {
     <>
       <h1 className={css.welcome}>Welcome to the ✨Library✨ </h1>
       <div className={css.controls}>
-        <SearchBar />
-        <AddNewBook />
+        <SearchBar
+          setBooks={setBooks}
+          setLoader={setLoader}
+          setError={setError}
+        />
+        <AddOrEditBook
+          setBooks={setBooks}
+          setLoader={setLoader}
+          setError={setError}
+          editMode={editMode}
+          setEditMode={setEditMode}
+        />
       </div>
+      {error && <p className={css.error}>Ooops! An error happened: {error}</p>}
+      {loader && <p className={css.loading}> 🟡 Loading...</p>}
       {books.length > 0 ? (
-        <BooksList books={books} />
+        <BooksList
+          books={books}
+          setEditMode={setEditMode}
+          setLoader={setLoader}
+          setError={setError}
+          setBooks={setBooks}
+        />
       ) : (
-        <p>There are no books in the Library yet</p>
+        <p>
+          There are no books in the Library yet or no books matching your
+          search.
+        </p>
       )}
     </>
   );

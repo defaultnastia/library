@@ -1,8 +1,8 @@
 import css from "./Button.module.css";
 
-const Button = ({ type, children }) => {
+const Button = ({ btnType, children, onClick }) => {
   const applyStyle = () => {
-    switch (type) {
+    switch (btnType) {
       case "normal":
         return css.normal;
       case "red":
@@ -14,7 +14,11 @@ const Button = ({ type, children }) => {
     }
   };
 
-  return <button className={applyStyle(type)}>{children}</button>;
+  return (
+    <button className={applyStyle(btnType)} onClick={onClick}>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

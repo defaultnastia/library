@@ -1,6 +1,4 @@
 .normal {
-  border-radius: 8px;
-  padding: 4px 8px;
   border: 2px solid var(--main-color);
   background-color: transparent;
 }
@@ -12,13 +10,22 @@
 }
 
 .red {
-  border-radius: 8px;
-  padding: 4px 8px;
   border: 2px solid crimson;
   color: crimson;
 }
 
 .red:hover {
   background: crimson;
+  color: white;
+}
+
+.submit {
+  border: 2px solid var(--main-color);
+  background-color: transparent;
+}
+
+.submit:hover {
+  color: white;
+  background: darkblue;
   color: white;
 }

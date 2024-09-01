@@ -1,8 +1,41 @@
 import Button from "../Button/Button";
+import { deleteBook, getAllBooks, markAsBorrowed } from "../services/booksAPI";
 import css from "./Book.module.css";
 
-const Book = ({ book }) => {
+const Book = ({ book, setEditMode, setLoader, setError, setBooks }) => {
   const { title, author, isbn, isBorrowed } = book;
+
+  const handleBorrowButton = async () => {
+    try {
+      setLoader(true);
+      await markAsBorrowed(isbn, !isBorrowed);
+      const allBooks = await getAllBooks();
+      setBooks(allBooks);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoader(false);
+      setEditMode(null);
+    }
+  };
+
+  const handleEditButton = () => {
+    setEditMode(book);
+  };
+
+  const handleDeleteButton = async () => {
+    try {
+      setLoader(true);
+      await deleteBook(isbn);
+      const allBooks = await getAllBooks();
+      setBooks(allBooks);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoader(false);
+      setEditMode(null);
+    }
+  };
 
   return (
     <div className={css.book}>
@@ -11,9 +44,15 @@ const Book = ({ book }) => {
       <p>ISBN: {isbn}</p>
       {isBorrowed ? <p> 🔄 Borrowed</p> : <p> ✅ Returned</p>}
       <div className={css.tools}>
-        <Button type="normal">{isBorrowed ? "Return" : "Borrow"}</Button>
-        <Button type="normal">Edit</Button>
-        <Button type="red">Delete</Button>
+        <Button btnType="normal" onClick={handleBorrowButton}>
+          {isBorrowed ? "Return" : "Borrow"}
+        </Button>
+        <Button btnType="normal" onClick={handleEditButton}>
+          Edit
+        </Button>
+        <Button btnType="red" onClick={handleDeleteButton}>
+          Delete
+        </Button>
       </div>
     </div>
   );

@@ -20,7 +20,18 @@ h3 {
   text-align: center;
 }
 
+input {
+  outline: none;
+  border: 2px solid var(--main-color);
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: inherit;
+  color: inherit;
+}
+
 button {
+  border-radius: 8px;
+  padding: 4px 8px;
   outline: 0;
   cursor: pointer;
   font-size: inherit;
@@ -29,4 +40,5 @@ button {
 
 body {
   padding: 40px;
+  min-width: 820px;
 }

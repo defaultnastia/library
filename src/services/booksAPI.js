@@ -6,7 +6,7 @@ const booksAPIInstance = axios.create({
 
 export const getAllBooks = async () => {
   const result = await booksAPIInstance.get("");
-  return result.data;
+  return result.data.reverse();
 };
 
 export const addBook = async (data) => {
@@ -34,6 +34,8 @@ export const searchBooks = async (query) => {
 };
 
 export const markAsBorrowed = async (isbn, isBorrowed) => {
-  const result = await booksAPIInstance.patch(`/${isbn}`, isBorrowed);
+  const result = await booksAPIInstance.patch(`/${isbn}/borrow`, {
+    isBorrowed,
+  });
   return result.data;
 };
