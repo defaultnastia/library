@@ -54,7 +54,7 @@ const AddOrEditBook = ({
       }
 
       if (editMode) {
-        await updateBook(editMode.isbn, { title, author, isbn, isBorrowed });
+        await updateBook(editMode.isbn, { title, author, isBorrowed });
       } else {
         await addBook({ title, author, isbn, isBorrowed });
       }
