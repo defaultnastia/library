@@ -45,7 +45,12 @@ function App() {
           setEditMode={setEditMode}
         />
       </div>
-      {error && <p className={css.error}>Ooops! An error happened: {error}</p>}
+      {error && (
+        <p className={css.error}>
+          Ooops! An error happened:{" "}
+          {error.includes("409") ? "The book should be unique." : error}
+        </p>
+      )}
       {loader && <p className={css.loading}> 🟡 Loading...</p>}
       {books.length > 0 ? (
         <BooksList
