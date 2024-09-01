@@ -8,7 +8,7 @@ const SearchBar = ({ setBooks, setLoader, setError }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const query = event.target.query.value;
+    const query = event.target.query.value.trim();
 
     try {
       setLoader(true);

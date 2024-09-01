@@ -34,9 +34,9 @@ const AddOrEditBook = ({
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const title = event.target.title.value;
-    const author = event.target.author.value;
-    const isbn = event.target.isbn.value;
+    const title = event.target.title.value.trim();
+    const author = event.target.author.value.trim();
+    const isbn = event.target.isbn.value.trim();
     const isBorrowed = event.target.borrowed.checked;
 
     try {
